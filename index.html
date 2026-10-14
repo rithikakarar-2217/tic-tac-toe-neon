@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Tic-Tac-Toe | 2-Player Game</title>
+  <meta name="description" content="A modern, neon-themed 2-player Tic-Tac-Toe game built with HTML, CSS, and JavaScript.">
+
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-pink"></div>
+
+  <!-- Confetti Canvas for Victory Celebrations -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="game-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="badge">NEON EDITION</div>
+      <h1 class="title">TIC <span class="accent-cyan">TAC</span> <span class="accent-pink">TOE</span></h1>
+      <p class="subtitle">Two-player battle on a classic 3×3 grid</p>
+    </header>
+
+    <!-- Scoreboard -->
+    <section class="scoreboard" aria-label="Scoreboard">
+      <div class="score-card player-x-card" id="card-x">
+        <span class="player-icon cyan-text">✕</span>
+        <span class="player-name">Player X</span>
+        <span class="score-number" id="score-x">0</span>
+      </div>
+
+      <div class="score-card tie-card" id="card-tie">
+        <span class="player-icon silver-text">―</span>
+        <span class="player-name">Draws</span>
+        <span class="score-number" id="score-tie">0</span>
+      </div>
+
+      <div class="score-card player-o-card" id="card-o">
+        <span class="player-icon pink-text">◯</span>
+        <span class="player-name">Player O</span>
+        <span class="score-number" id="score-o">0</span>
+      </div>
+    </section>
+
+    <!-- Turn / Status Indicator -->
+    <div class="turn-indicator" id="turn-indicator" aria-live="polite">
+      Player <span id="current-player-symbol" class="cyan-text">X</span>'s Turn
+    </div>
+
+    <!-- 3x3 Game Board -->
+    <main class="board-wrapper">
+      <div class="board" id="board" role="grid" aria-label="Tic Tac Toe Board">
+        <button class="cell" data-cell-index="0" role="gridcell" aria-label="Cell 1"></button>
+        <button class="cell" data-cell-index="1" role="gridcell" aria-label="Cell 2"></button>
+        <button class="cell" data-cell-index="2" role="gridcell" aria-label="Cell 3"></button>
+        <button class="cell" data-cell-index="3" role="gridcell" aria-label="Cell 4"></button>
+        <button class="cell" data-cell-index="4" role="gridcell" aria-label="Cell 5"></button>
+        <button class="cell" data-cell-index="5" role="gridcell" aria-label="Cell 6"></button>
+        <button class="cell" data-cell-index="6" role="gridcell" aria-label="Cell 7"></button>
+        <button class="cell" data-cell-index="7" role="gridcell" aria-label="Cell 8"></button>
+        <button class="cell" data-cell-index="8" role="gridcell" aria-label="Cell 9"></button>
+      </div>
+    </main>
+
+    <!-- Control Buttons -->
+    <footer class="controls">
+      <button class="btn btn-primary" id="restart-btn" title="Restart the current round">
+        <span class="btn-icon">↻</span> Restart Round
+      </button>
+      <button class="btn btn-secondary" id="reset-score-btn" title="Reset all match scores">
+        Reset Scores
+      </button>
+      <button class="btn btn-icon-only" id="sound-toggle-btn" title="Toggle Sound Effects" aria-label="Toggle Sound">
+        <span id="sound-icon">🔊</span>
+      </button>
+    </footer>
+  </div>
+
+  <!-- Game Over Modal Overlay -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-badge" id="modal-badge">ROUND OVER</div>
+      <h2 class="modal-title" id="modal-title">Player X Wins!</h2>
+      <p class="modal-subtitle" id="modal-subtitle">Brilliant move! You conquered the grid.</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary modal-play-btn" id="modal-play-again-btn">
+          Play Next Round ➜
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script src="script.js" defer></script>
+</body>
+</html>
